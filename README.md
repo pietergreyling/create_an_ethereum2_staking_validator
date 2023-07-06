@@ -1,2 +1,2 @@
-# programming_notes_ethereum_pos_validator
-programming_notes_ethereum_pos_validator
+# creating_local_ethereum2_staking_validator_for_goerli_testnet
+creating_local_ethereum2_staking_validator_for_goerli_testnet
