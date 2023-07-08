@@ -1,2 +1,2 @@
-# ethereum2_staking_validator_for_goerli_testnet
-ethereum2_staking_validator_for_goerli_testnet
+# ethereum2_staking_validator_goerli_testnet
+ethereum2_staking_validator_goerli_testnet
