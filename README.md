@@ -6,7 +6,7 @@ Author: Pieter Greyling (Sunday 2023.07.23)
 
 ## Overview
 
-This is a step-by-step guide on how to create an Ethereum staking validator using Ethereum's official Staking Deposit CLI and Staking Deposit Contract.
+This is a step-by-step guide on how to create an Ethereum staking validator using Ethereum's official Staking Deposit CLI.
 
 ## Important Notes and Risks
 
