@@ -1,0 +1,9 @@
+sequenceDiagram
+
+participant Local Development Ethereum 2 Stake Validator
+participant Ethereum Testnet
+
+Local Development Ethereum 2 Stake Validator -> Ethereum Testnet: Connects to the Ethereum Testnet via the Ethereum p2p protocol.
+Local Development Ethereum 2 Stake Validator -> Ethereum Testnet: Submits transactions to the Ethereum Testnet via the Ethereum JSON-RPC API.
+Ethereum Testnet -> Local Development Ethereum 2 Stake Validator: Validates the transactions and adds them to the blockchain.
+Ethereum Testnet -> Local Development Ethereum 2 Stake Validator: Sends updates about the state of the blockchain to the local development Ethereum 2 stake validator via the Ethereum p2p protocol.

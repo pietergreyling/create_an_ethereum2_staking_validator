@@ -1,0 +1,28 @@
+[Sequence Diagram]
+
+participant Local Development Ethereum 2 Stake Validator
+participant Validator Keys
+participant Deposit Contract
+participant Beacon Node
+participant Geth (Client)
+participant Ethereum Testnet
+participant Testnet Beacon Chain
+
+Local Development Ethereum 2 Stake Validator -> Validator Keys: Generate validator keys
+Local Development Ethereum 2 Stake Validator -> Deposit Contract: Deposit ETH
+Local Development Ethereum 2 Stake Validator -> Beacon Node: Start Beacon Node
+Local Development Ethereum 2 Stake Validator -> Geth (Client): Start Geth (Client)
+Beacon Node -> Ethereum Testnet: Connect to Ethereum Testnet
+Geth (Client) -> Testnet Beacon Chain: Connect to Testnet Beacon Chain
+
+[Note over Beacon Node and Geth (Client)]
+Both nodes are now connected to the Ethereum 2 Testnet and the Testnet Beacon Chain
+
+Local Development Ethereum 2 Stake Validator -> Beacon Node: Begin validating blocks
+Beacon Node -> Local Development Ethereum 2 Stake Validator: Report block validation results
+Local Development Ethereum 2 Stake Validator -> Geth (Client): Report block validation results
+Geth (Client) -> Testnet Beacon Chain: Report block validation results
+Testnet Beacon Chain -> Local Development Ethereum 2 Stake Validator: Distribute rewards
+
+[Note over Local Development Ethereum 2 Stake Validator]
+Local Development Ethereum 2 Stake Validator has now earned rewards for validating blocks

@@ -1,0 +1,59 @@
+participant Validator Node
+participant Beacon Chain
+participant Ethereum Network
+participant Staking Deposit Contract
+
+note over Validator Node: Validator Node Initialization
+
+Validator Node -> Beacon Chain: Connect to Beacon Chain
+Beacon Chain -> Validator Node: Handshake
+
+note over Validator Node: Validator Activation
+
+Validator Node -> Staking Deposit Contract: Get Validator Information
+Staking Deposit Contract --> Validator Node: Validator Information
+
+alt Option 1: Manual Activation via Launch Pad
+Validator Node -> Validator Operator: Provide Activation Details
+Validator Operator -> Launch Pad: Access Launch Pad
+Launch Pad -> Validator Operator: Complete Validator Activation
+Validator Operator -> Launch Pad: Provide Deposit Data
+Launch Pad -> Ethereum Network: Broadcast Deposit Transaction
+Ethereum Network -> Beacon Chain: Confirm Deposit Transaction
+Beacon Chain --> Validator Node: Validator Activated
+
+else Option 2: Programmatic Activation via Staking Deposit Contract
+Validator Node -> Staking Deposit Contract: Generate Deposit Data
+Staking Deposit Contract -> Validator Node: Deposit Data
+Validator Node -> Ethereum Network: Broadcast Deposit Transaction
+Ethereum Network -> Beacon Chain: Confirm Deposit Transaction
+Beacon Chain --> Validator Node: Validator Activated
+
+end
+
+note over Validator Node: Validator Operation
+
+Validator Node -> Beacon Chain: Participate in Consensus
+Beacon Chain -> Validator Node: Block Proposals and Attestations
+Validator Node -> Beacon Chain: Validate and Sign Blocks/Attestations
+Beacon Chain -> Ethereum Network: Finalize Blocks/Attestations
+
+note over Validator Node: Slashing Protection
+
+Validator Node -> Beacon Chain: Check for Slashable Offenses
+Beacon Chain -> Validator Node: Slashable Offenses Status
+
+note over Validator Node: Rewards and Withdrawals
+
+Validator Node -> Beacon Chain: Claim Rewards
+Beacon Chain -> Validator Node: Reward Status
+Validator Node -> Beacon Chain: Initiate Withdrawal
+Beacon Chain -> Validator Node: Withdrawal Status
+
+note over Validator Node: Node Shutdown
+
+Validator Node -> Beacon Chain: Disconnect from Beacon Chain
+Beacon Chain -> Validator Node: Termination Confirmation
+Validator Node -> Staking Deposit Contract: Withdraw Deposit
+Staking Deposit Contract --> Validator Node: Deposit Withdrawn
+Validator Node -> Ethereum Network: Close Connection

@@ -1,0 +1,44 @@
+sequenceDiagram
+
+    title Ethereum 2 Staking Validator Keys and Deposit Contract Interactions on Goerli
+
+    participant StakingValidator
+    participant ValidatorKeys
+    participant StakingDepositContract
+    participant GoerliNetwork
+
+    activate StakingValidator
+    activate ValidatorKeys
+    activate StakingDepositContract
+    activate GoerliNetwork
+
+    Note over StakingValidator: Validator Initialization
+
+    StakingValidator -> ValidatorKeys: Generate Validator Keys
+    ValidatorKeys -> StakingValidator: Return Validator Keys
+
+    Note over StakingValidator: Deposit Authorization
+
+    StakingValidator -> StakingDepositContract: Authorize Deposit
+    StakingDepositContract -> StakingValidator: Return Deposit Authorization
+
+    Note over StakingValidator: Validator Activation
+
+    StakingValidator -> GoerliNetwork: Create Deposit Transaction
+    GoerliNetwork -> StakingValidator: Return Signed Deposit Transaction
+    StakingValidator -> GoerliNetwork: Broadcast Deposit Transaction
+
+    Note over GoerliNetwork: Transaction Processing
+
+    GoerliNetwork -> GoerliNetwork: Verify Deposit Transaction
+    GoerliNetwork -> GoerliNetwork: Update Validator Status
+
+    Note over StakingValidator: Confirmation and Activation
+
+    GoerliNetwork -> StakingValidator: Transaction Confirmed
+    StakingValidator -> StakingValidator: Activate Validator
+
+    deactivate StakingValidator
+    deactivate ValidatorKeys
+    deactivate StakingDepositContract
+    deactivate GoerliNetwork

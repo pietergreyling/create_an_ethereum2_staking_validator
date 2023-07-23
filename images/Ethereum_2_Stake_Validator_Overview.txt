@@ -1,0 +1,15 @@
+[Sequence Diagram]
+
+participant Ethereum Staking Validator Node
+participant Beacon Chain
+participant Geth (Client)
+
+Ethereum Staking Validator Node -> Beacon Chain: Connect to Beacon Chain
+Beacon Chain -> Ethereum Staking Validator Node: Provide block information
+Ethereum Staking Validator Node -> Geth (Client): Report block information
+Geth (Client) -> Ethereum Staking Validator Node: Validate block
+Ethereum Staking Validator Node -> Beacon Chain: Submit block
+Beacon Chain -> Ethereum Staking Validator Node: Distribute rewards
+
+[Note over Ethereum Staking Validator Node]
+Ethereum Staking Validator Node is now validating blocks and earning rewards

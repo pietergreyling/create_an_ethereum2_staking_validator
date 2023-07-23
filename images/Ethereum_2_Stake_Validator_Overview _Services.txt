@@ -1,0 +1,15 @@
+[Sequence Diagram]
+
+participant Ethereum Staking Validator Node (Prysm)
+participant Beacon Chain (Prysm)
+participant Execution Client (Geth / Goerli Testnet)
+
+Ethereum Staking Validator Node (Prysm) -> Beacon Chain (Prysm): Connect to Beacon Chain
+Beacon Chain (Prysm) -> Ethereum Staking Validator Node (Prysm): Provide block information
+Ethereum Staking Validator Node (Prysm) -> Execution Client (Geth / Goerli Testnet): Report block information
+Execution Client (Geth / Goerli Testnet) -> Ethereum Staking Validator Node (Prysm): Validate block
+Ethereum Staking Validator Node (Prysm) -> Beacon Chain (Prysm): Submit block
+Beacon Chain (Prysm) -> Ethereum Staking Validator Node (Prysm): Distribute rewards
+
+[Note over Ethereum Staking Validator Node]
+Ethereum Staking Validator Node is now validating blocks and earning rewards
